@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> The Websites</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #00aaff;
+    --cyan: #00eaff;
+    --dark: #020711;
+    --glass: rgba(5, 18, 35, 0.62);
+    --border: rgba(0, 190, 255, 0.25);
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Orbitron", sans-serif;
+    color: white;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 50% -10%, rgba(0, 180, 255, .20), transparent 35%),
+        radial-gradient(circle at 10% 90%, rgba(0, 90, 255, .15), transparent 30%),
+        radial-gradient(circle at 90% 70%, rgba(0, 220, 255, .10), transparent 30%),
+        #020711;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.grid {
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+
+    background-image:
+        linear-gradient(rgba(0, 170, 255, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 170, 255, .045) 1px, transparent 1px);
+
+    background-size: 55px 55px;
+
+    transform: perspective(600px) rotateX(65deg);
+    transform-origin: center center;
+
+    animation: gridMove 18s linear infinite;
+}
+
+@keyframes gridMove {
+    from {
+        transform: perspective(600px) rotateX(65deg) translateY(0);
+    }
+
+    to {
+        transform: perspective(600px) rotateX(65deg) translateY(55px);
+    }
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .25;
+}
+
+.glow.one {
+    width: 350px;
+    height: 350px;
+    background: #008cff;
+    top: 5%;
+    left: 5%;
+    animation: float1 9s ease-in-out infinite;
+}
+
+.glow.two {
+    width: 300px;
+    height: 300px;
+    background: #00d9ff;
+    bottom: 5%;
+    right: 5%;
+    animation: float2 11s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    50% {
+        transform: translate(120px, 80px);
+    }
+}
+
+@keyframes float2 {
+    50% {
+        transform: translate(-100px, -70px);
+    }
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #00d9ff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00d9ff;
+    opacity: .5;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    from {
+        transform: translateY(110vh);
+    }
+
+    to {
+        transform: translateY(-10vh);
+    }
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+    width: min(1250px, 92%);
+    margin: auto;
+    padding: 55px 0 70px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 15px;
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(0, 220, 255, .25);
+    background: rgba(0, 130, 255, .08);
+    backdrop-filter: blur(15px);
+
+    border-radius: 30px;
+
+    color: #8eeaff;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #00eaff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00eaff;
+    animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .3;
+        transform: scale(.7);
+    }
+}
+
+h1 {
+    font-size: clamp(38px, 7vw, 76px);
+    font-weight: 800;
+    letter-spacing: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #72eaff,
+        #00aaff,
+        #ffffff
+    );
+
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: titleGlow 5s linear infinite;
+
+    text-shadow: 0 0 40px rgba(0, 190, 255, .25);
+}
+
+@keyframes titleGlow {
+    to {
+        background-position: 250% center;
+    }
+}
+
+.subtitle {
+    margin-top: 15px;
+    color: #7594a8;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+    max-width: 650px;
+    margin: 0 auto 45px;
+}
+
+.search {
+    width: 100%;
+    height: 58px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(0, 190, 255, .28);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0, 150, 255, .08),
+            rgba(255, 255, 255, .025)
+        );
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.08),
+        0 0 35px rgba(0, 150, 255, .08);
+
+    color: white;
+    outline: none;
+
+    padding: 0 22px;
+
+    font-family: Orbitron;
+    font-size: 13px;
+
+    transition: .3s;
+}
+
+.search:focus {
+    border-color: rgba(0, 220, 255, .65);
+
+    box-shadow:
+        0 0 30px rgba(0, 190, 255, .15),
+        inset 0 1px rgba(255,255,255,.1);
+}
+
+.search::placeholder {
+    color: #567083;
+}
+
+/* =========================
+   WEBSITE GRID
+========================= */
+
+.websites {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    position: relative;
+    min-height: 285px;
+
+    padding: 27px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 38, 65, .75),
+            rgba(3, 12, 25, .68)
+        );
+
+    border: 1px solid rgba(0, 180, 255, .20);
+
+    backdrop-filter: blur(25px);
+
+    overflow: hidden;
+
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        border-color .35s,
+        box-shadow .35s;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 210, 255, .13),
+            transparent 50%
+        );
+
+    opacity: 0;
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.015);
+
+    border-color: rgba(0, 220, 255, .55);
+
+    box-shadow:
+        0 15px 50px rgba(0, 130, 255, .15),
+        0 0 35px rgba(0, 200, 255, .08);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 190, 255, .16),
+            rgba(0, 100, 255, .05)
+        );
+
+    border: 1px solid rgba(0, 200, 255, .25);
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.08),
+        0 0 25px rgba(0, 180, 255, .08);
+
+    font-size: 28px;
+}
+
+.number {
+    color: #456477;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.card h2 {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 25px;
+
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.card p {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 10px;
+
+    color: #718b9c;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+
+    min-height: 44px;
+}
+
+.launch {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    height: 45px;
+
+    margin-top: 23px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(0, 205, 255, .3);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(0, 145, 255, .17),
+            rgba(0, 220, 255, .08)
+        );
+
+    color: #9cefff;
+
+    font-family: Orbitron;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.launch:hover {
+    color: white;
+
+    border-color: #00d9ff;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(0, 170, 255, .35),
+            rgba(0, 220, 255, .18)
+        );
+
+    box-shadow:
+        0 0 25px rgba(0, 210, 255, .22);
+}
+
+.arrow {
+    transition: .3s;
+}
+
+.launch:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    margin-top: 55px;
+
+    color: #385365;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   NO RESULTS
+========================= */
+
+.no-results {
+    display: none;
+
+    text-align: center;
+
+    color: #547080;
+
+    padding: 50px;
+
+    font-size: 13px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+    .websites {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding-top: 35px;
+    }
+
+    .websites {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: 260px;
+    }
+
+    h1 {
+        letter-spacing: 2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="grid"></div>
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+</div>
+
+<div class="particles" id="particles"></div>
+
+<main class="container">
+
+    <header class="header">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            WEB HUB ONLINE
+        </div>
+
+        <h1>WEB HUB</h1>
+
+        <p class="subtitle">
+            ALL MY APPS • ONE PLACE
+        </p>
+
+    </header>
+
+    <div class="search-container">
+        <input
+            id="search"
+            class="search"
+            type="text"
+            placeholder="Search your websites..."
+            autocomplete="off"
+        >
+    </div>
+
+    <section class="websites" id="websites">
+
+        <!-- PRO CHAT -->
+        <article class="card" data-name="Pro Chat">
+
+            <div class="card-top">
+
+                <div class="icon">💬</div>
+
+                <div class="number">01</div>
+
+            </div>
+
+            <h2>PRO CHAT</h2>
+
+            <p>
+                A real-time chat experience for connecting and messaging.
+            </p>
+
+            <button class="launch"
+                onclick="openSite('https://pro-chat-mauve.vercel.app/')">
+
+                LAUNCH
+                <span class="arrow">→</span>
+
+            </button>
+
+        </article>
+
+
+        <!-- APOLLO -->
+        <article class="card" data-name="Apollo">
+
+            <div class="card-top">
+
+                <div class="icon">🚀</div>
+
+                <div class="number">02</div>
+
+            </div>
+
+            <h2>APOLLO</h2>
+
+            <p>
+                Launch into space with your Apollo-inspired mission.
+            </p>
+
+            <button class="launch"
+                onclick="openSite('https://apollo-gules-kappa.vercel.app/')">
+
+                LAUNCH
+                <span class="arrow">→</span>
+
+            </button>
+
+        </article>
+
+
+        <!-- POP THE LOCK -->
+        <article class="card" data-name="Pop the Lock">
+
+            <div class="card-top">
+
+                <div class="icon">🔓</div>
+
+                <div class="number">03</div>
+
+            </div>
+
+            <h2>POP THE LOCK</h2>
+
+            <p>
+                Test your timing and reaction speed in the lock challenge.
+            </p>
+
+            <button class="launch"
+                onclick="openSite('https://pop-the-lock.vercel.app/')">
+
+                PLAY
+                <span class="arrow">→</span>
+
+            </button>
+
+        </article>
+
+
+        <!-- BERRY AI -->
+        <article class="card" data-name="Berry AI">
+
+            <div class="card-top">
+
+                <div class="icon">🫐</div>
+
+                <div class="number">04</div>
+
+            </div>
+
+            <h2>BERRY AI</h2>
+
+            <p>
+                Your custom AI assistant with a futuristic interface.
+            </p>
+
+            <button class="launch"
+                onclick="openSite('https://berry-ai-liard.vercel.app/')">
+
+                OPEN AI
+                <span class="arrow">→</span>
+
+            </button>
+
+        </article>
+
+
+        <!-- LUNAR LANDER -->
+        <article class="card" data-name="Lunar Lander">
+
+            <div class="card-top">
+
+                <div class="icon">🌙</div>
+
+                <div class="number">05</div>
+
+            </div>
+
+            <h2>LUNAR LANDER</h2>
+
+            <p>
+                Pilot your spacecraft and attempt a lunar landing.
+            </p>
+
+            <button class="launch"
+                onclick="openSite('https://lunar-lander-v2.vercel.app/')">
+
+                PLAY
+                <span class="arrow">→</span>
+
+            </button>
+
+        </article>
+
+
+        <!-- DRAW -->
+        <article class="card" data-name="Draw">
+
+            <div class="card-top">
+
+                <div class="icon">🎨</div>
+
+                <div class="number">06</div>
+
+            </div>
+
+            <h2>DRAW</h2>
+
+            <p>
+                Create, sketch, and experiment on your digital canvas.
+            </p>
+
+            <button class="launch"
+                onclick="openSite('https://draw-kappa-liard.vercel.app/')">
+
+                START DRAWING
+                <span class="arrow">→</span>
+
+            </button>
+
+        </article>
+
+
+        <!-- VISIONARY AI -->
+        <article class="card" data-name="Visionary AI">
+
+            <div class="card-top">
+
+                <div class="icon">✨</div>
+
+                <div class="number">07</div>
+
+            </div>
+
+            <h2>VISIONARY AI</h2>
+
+            <p>
+                Create AI-generated images from your ideas.
+            </p>
+
+            <button class="launch"
+                onclick="openSite('https://visionary-ai-generator.vercel.app/')">
+
+                OPEN AI
+                <span class="arrow">→</span>
+
+            </button>
+
+        </article>
+
+
+    </section>
+
+    <div class="no-results" id="noResults">
+        NO WEBSITES FOUND
+    </div>
+
+    <footer class="footer">
+        PERSONAL WEB HUB • 2026
+    </footer>
+
+</main>
+
+<script>
+
+/* =========================
+   PARTICLES
+========================= */
+
+const particleContainer =
+    document.getElementById("particles");
+
+for (let i = 0; i < 65; i++) {
+
+    const particle =
+        document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (8 + Math.random() * 15) + "s";
+
+    particle.style.animationDelay =
+        (-Math.random() * 20) + "s";
+
+    particle.style.opacity =
+        0.15 + Math.random() * 0.6;
+
+    particleContainer.appendChild(particle);
+}
+
+
+/* =========================
+   OPEN WEBSITE
+========================= */
+
+function openSite(url) {
+
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const search =
+    document.getElementById("search");
+
+const cards =
+    document.querySelectorAll(".card");
+
+const noResults =
+    document.getElementById("noResults");
+
+search.addEventListener("input", () => {
+
+    const query =
+        search.value.toLowerCase().trim();
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name.toLowerCase();
+
+        if (name.includes(query)) {
+
+            card.style.display = "";
+
+            visible++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    noResults.style.display =
+        visible === 0 ? "block" : "none";
+
+});
+
+
+/* =========================
+   CARD TILT
+========================= */
+
+cards.forEach(card => {
+
+    card.addEventListener("mousemove", e => {
+
+        const rect =
+            card.getBoundingClientRect();
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+        const rotateX =
+            ((y - centerY) / centerY) * -3;
+
+        const rotateY =
+            ((x - centerX) / centerX) * 3;
+
+        card.style.transform =
+            `translateY(-8px) scale(1.015)
+             perspective(800px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
